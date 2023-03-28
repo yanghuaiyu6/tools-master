@@ -1,10 +1,6 @@
 import time
-import win32gui
-import win32api
-import pywinauto
-from pywinauto.timings import wait_until
 
-from demo import right_click, connect_program
+from demo import connect_program
 
 app = connect_program()
 # 获取控件并右键
