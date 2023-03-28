@@ -94,6 +94,16 @@ def right_click(app, title, control_type):
         print(f"发生异常: {e}")
 
 
+# 右键弹出菜单的菜单点击方法
+def right_click_menu(app, menu_item_title, control_type):
+    # 通过窗口标题获取顶层窗口
+    top_window = app.top_window()
+    # 点击右键弹出的菜单项
+    menu_item = top_window.child_window(title=menu_item_title, control_type=control_type)
+    # 左键点击菜单项
+    menu_item.click_input(button='left')
+
+
 # 执行第一条测试
 def main():
     # start_program()  # 启动程序
