@@ -1,4 +1,0 @@
-# 可以通过模拟键盘来实现右键菜单的选择
-app.top_window().type_keys('{DOWN}{DOWN}{DOWN}{ENTER}')
-# 回到顶层窗口实现右键弹出菜单的点击
-app.top_window().
