@@ -1,8 +1,8 @@
 import subprocess
 from datetime import time
 from pywinauto import Application
-from demo.demo import APP_PATH, APP_DIR
-from utile.constant_config import MAIN_WINDOW
+from utile.constant_config import MAIN_WINDOW, APP_PATH, APP_DIR
+from utile.exception_utile import ControlNotFoundException
 from utile.text_utile import set_text
 
 
@@ -23,6 +23,7 @@ def connect_program(title=MAIN_WINDOW):
             time.sleep(1)
 
 
+# 操作窗口，先输入文本再进行按钮点击的操作
 def operation_window(app, params, win_name=MAIN_WINDOW):
     win = app.window(title_re=win_name)
     print(f"成功获取操作窗口：{win_name}")
@@ -38,7 +39,10 @@ def operation_window(app, params, win_name=MAIN_WINDOW):
     for item in params.get('click', []):
         target_control = win.child_window(title=item)
         if target_control.exists():
-            target_control.invoke()
+            target_control.click_input()
+            # target_control.invoke()
         else:
             print(f"未找到目标控件，参数为：{item}")
             raise ControlNotFoundException("未找到控件")
+
+# 双击然后输入文本内容
