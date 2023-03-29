@@ -1,11 +1,11 @@
-from utile.constant_config import MAIN_WINDOW
+from repair.constants.constant_config import MAIN_WINDOW
 from utile.program_utile import start_program, connect_program, operation_window
 from utile.click_utile import right_click, right_click_menu, cell_input_text, \
     left_click_by_index, left_click_by_title_and_type
 
+start_program()  # 启动程序
+app = connect_program()  # 连接程序
 if __name__ == '__main__':
-    start_program()  # 启动程序
-    app = connect_program()  # 连接程序
     operation_window(app=app, win_name="项目选择框", params={'input': [], 'click': ["取消"]})
     # 获取程序窗口，执行操作参数
     operation_window(app=app, win_name=MAIN_WINDOW, params={'input': [], 'click': ["项目", "新建项目"]})
