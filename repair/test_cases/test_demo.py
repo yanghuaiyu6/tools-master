@@ -7,6 +7,7 @@ import pytest
 @allure.story("场景描述")
 @allure.title("标题名称")
 @allure.severity("严重程度")
+@allure.suite("测试套件")
 def test_case1(setup):
     print("可以写明步骤，会在报告的日志中进行查看")
     print("test_case1")
