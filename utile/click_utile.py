@@ -1,6 +1,6 @@
 from pywinauto.findwindows import ElementAmbiguousError
 
-from utile.constant_config import MAIN_WINDOW
+from repair.constants.constant_config import MAIN_WINDOW
 
 
 # 左键单机控件根据下标索引定位控件进行点击

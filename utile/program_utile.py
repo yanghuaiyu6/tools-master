@@ -1,7 +1,7 @@
 import subprocess
 from datetime import time
 from pywinauto import Application
-from utile.constant_config import MAIN_WINDOW, APP_PATH, APP_DIR
+from repair.constants.constant_config import MAIN_WINDOW, APP_PATH, APP_DIR
 from utile.exception_utile import ControlNotFoundException
 from utile.text_utile import set_text
 
@@ -15,7 +15,7 @@ def start_program(app_path=APP_PATH, app_dir=APP_DIR):
 def connect_program(title=MAIN_WINDOW):
     while True:
         try:
-            app = Application(backend="uia").connect(title_re=title, timeout=5)
+            app = Application(backend="uia").connect(title_re=title, timeout=10)
             print(f"链接：{title} 程序成功")
             return app
         except TimeoutError:
