@@ -6,10 +6,15 @@ class Click:
         self.app = connect_program()  # 连接程序
         self.window = self.app.window(title=window_title)
 
-    # 左键单击按钮
-    def left_click(self, control_title, control_type, index=0):
+    # 左键单击按钮（后端执行）
+    def left_click_hide(self, control_title, control_type, index=0):
         control = self.window.child_window(title=control_title, control_type=control_type, found_index=index)
         control.invoke()
+
+    # 左键单击按钮（基于界面）
+    def left_click(self, control_title, control_type, index=0):
+        control = self.window.child_window(title=control_title, control_type=control_type, found_index=index)
+        control.click_input(button='left')
 
     # 左键单击输入（循环）
     def left_click_input_texts(self, control_parms, input_texts):
@@ -54,21 +59,21 @@ class Click:
 #     input_texts = ['文本1', '文本2', '文本3']
 #     demo = Click(window_title=MAIN_WINDOW)
 
-    # （1）鼠标左键单击
-    # demo.left_click("新增", "Button")
-    # demo.left_click("新增", "Button")
-    #
-    # （2）鼠标左键单击输入文本（多个文本控件，依次点击输入）
+# （1）鼠标左键单击
+# demo.left_click("新增", "Button")
+# demo.left_click("新增", "Button")
+#
+# （2）鼠标左键单击输入文本（多个文本控件，依次点击输入）
 
-    # input_test = ["第一条总线", "第二条总线"]
-    # demo.left_click_input_texts(control_specs, input_test)
+# input_test = ["第一条总线", "第二条总线"]
+# demo.left_click_input_texts(control_specs, input_test)
 
-    # （3）鼠标左键双击
-    # demo.left_double_click("第一条总线", "DataItem")
-    #
-    # （4）鼠标左键双击进行文本输入
-    # input_text_for_double_click = '双击输入的文本'
-    # demo.left_double_click_input_text("aaa", 'bus_0', "DataItem", )
-    #
-    # # （5）鼠标右键单击
-    # demo.right_click("项目", "TreeItem")
+# （3）鼠标左键双击
+# demo.left_double_click("第一条总线", "DataItem")
+#
+# （4）鼠标左键双击进行文本输入
+# input_text_for_double_click = '双击输入的文本'
+# demo.left_double_click_input_text("aaa", 'bus_0', "DataItem", )
+#
+# # （5）鼠标右键单击
+# demo.right_click("项目", "TreeItem")
