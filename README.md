@@ -1,4 +1,4 @@
-# 需求说明
+# 一、需求说明
 
 1.构型数的操作
 2.菜单栏的操作
@@ -14,7 +14,75 @@
 （1）点击控件之后输入
 （2）点击控件之后输入循环输入
 
-# 各个包的说明
+# 二、涉及到的控件分类
+
+## 1.菜单栏控件类型
+
+    MenuItemControlTypeId 
+
+## 2.工具栏控件类型
+
+    ToolBarControlTypeId ：空白处
+    ButtonControlTypeId ：按钮
+    CheckBoxControlTypeId ：复选框
+    ToolTipControlTypeId ：提示控件（无用）
+
+工具栏展开之后的浮动窗口没法使用
+
+## 3.项目展示区域
+
+    TabControlTypeId ：空白处
+    TabItemControlTypeId ：选项卡项目
+
+## 4.构型树区域
+
+    EditControlTypeId ：编辑（搜索框）
+    TreeItemControlTypeId ：树项目
+    TreeControlTypeId ：构型树空白处
+
+右键：
+MenuItemControlTypeId ：菜单项目
+
+## 5.主操作区
+
+    PaneControlTypeId ：空白主操纵区域
+    TabItemControlTypeId ：选项卡项目，（上面的页签和下面的页签）
+    EditControlTypeId ：编辑
+    ButtonControlTypeId ：按钮
+    TextControlTypeId ：文本（标签）
+    ComboBoxControlTypeId ：组合框
+    CheckBoxControlTypeId ：复选框
+    TreeItemControlTypeId ：ICD数据包中每个单元格和整行都是此控件
+    DataItemControlTypeId ：发送接收节点
+    ScrollBarControlTypeId ：滚动条
+
+## 6.提示栏
+
+    CheckBoxControlTypeId 
+    DataItemControlTypeId 
+    TableControlTypeId ：表头
+    ButtonControlTypeId 
+    TreeItemControlTypeId 
+    ThumbControlTypeId ：缩略图（放大缩小窗口）
+
+## 7.操作窗口
+
+    ComboBoxControlTypeId ：组合框
+    EditControlTypeId ：编辑
+    ButtonControlTypeId 
+    TextControlTypeId ：文本
+    TabItemControlTypeId 
+    PaneControlTypeId ：窗格
+    SpinnerControlTypeId ：日期选择
+    RadioButtonControlTypeId：开关
+    TreeItemControlTypeId ：项目选择
+    DataItemControlTypeId ：总线列表
+    MenuItemControlTypeId 
+    TabControlTypeId ：选项卡
+    RadioButtonControlTypeId ：单选按钮
+    CheckBoxControlTypeId ：复选框
+
+# 三、各个包的说明
 
 config：包含用于配置测试工具的文件和模块，例如 settings.py 文件，其中包含了工具的默认设置和参数。
 logs：包含用于记录测试过程和结果的模块和工具，例如 log_util.py 模块，其中包含了用于写日志文件的函数和类。
