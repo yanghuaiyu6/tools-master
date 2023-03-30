@@ -18,7 +18,7 @@ class Program:
     def connect_program(self):
         while True:
             try:
-                self.app = Application(backend="uia").connect(title_re=self.main_window_title, timeout=10)
+                self.app = Application(backend="uia").connect(title_re=self.main_window_title, timeout=20)
                 print(f"链接：{self.main_window_title} 程序成功")
                 return self.app
             except TimeoutError:
@@ -43,8 +43,7 @@ class Program:
         for item in params.get('click', []):
             target_control = win.child_window(title=item)
             if target_control.exists():
-                # target_control.click_input()
-                target_control.invoke()
+                target_control.click_input()
             else:
                 print(f"未找到目标控件，参数为：{item}")
                 raise ControlNotFoundException("未找到控件")
