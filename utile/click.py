@@ -1,4 +1,3 @@
-from repair.constants.constant_config import MAIN_WINDOW
 from utile.program_utile import connect_program
 
 
