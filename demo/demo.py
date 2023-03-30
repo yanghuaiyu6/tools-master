@@ -11,12 +11,14 @@ if __name__ == '__main__':
     app = program.connect_program()
     # 激活控件
     click = Click(app)
-    #
-    # program.operation_window(params={'input': [], 'click': ["取消"]}, win_name="项目选择框")
-    # program.operation_window(params={'click': ["项目", "新建项目"]})
-    # program.operation_window(win_name="创建项目",
-    #                          params={'input': [('名称：', '测试项目1'), ('版本号', '测试1')], 'click': ["确定"]})
 
+    # 项目的创建
+    program.operation_window(params={'input': [], 'click': ["取消"]}, win_name="项目选择框")
+    program.operation_window(params={'click': ["项目", "新建项目"]})
+    program.operation_window(win_name="创建项目",
+                             params={'input': [('名称：', '测试项目1'), ('版本号', '测试1')], 'click': ["确定"]})
+
+    # 构型数的创建
     create_tree(program, click, project_name="测试项目1", product_name=PRODUCT_NAME,
                 plug_name=PLUG_NAME, icd_name=BUS_NAME, msg_id=NODE_1394_NAME)
 
