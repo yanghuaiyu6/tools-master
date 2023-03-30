@@ -7,7 +7,7 @@ from utile.click import Click
 if __name__ == '__main__':
     # 启动程序
     program = Program(APP_PATH, APP_DIR, MAIN_WINDOW)
-    # program.start_program()
+    program.start_program()
     app = program.connect_program()
     # 激活控件
     click = Click(app)

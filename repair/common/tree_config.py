@@ -1,17 +1,21 @@
 """
 构型树的创建
 """
-
-PROJECT_NAME = "项目名称"
-PRODUCT_NAME = "成品名称"
-PLUG_NAME = "插头名称"
-BUS_NAME = ["总线名称"]
-NODE_1394_NAME = "1394节点名称"
-ICD_NAME = "数据包"
-MSG_ID = "1H"
+import allure
 
 
-# 新建构型数
+
+# PROJECT_NAME = "项目名称"
+# PRODUCT_NAME = "成品名称"
+# PLUG_NAME = "插头名称"
+# BUS_NAME = ["总线名称"]
+# NODE_1394_NAME = "1394节点名称"
+# ICD_NAME = "数据包"
+# MSG_ID = "1H"
+
+
+# 新建构型数（待完善）
+@allure.story("新建完整的构型数")
 def create_tree(program, click, project_name, product_name, plug_name, icd_name=None, msg_id=None):
     click.right_click(project_name, "TreeItem")
     click.right_click_menu("新建成品", "MenuItem")
