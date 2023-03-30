@@ -12,7 +12,7 @@ MSG_ID = "1H"
 
 
 # 新建构型数
-def create_tree(program, click, project_name, product_name, plug_name, icd_name, msg_id):
+def create_tree(program, click, project_name, product_name, plug_name, icd_name=None, msg_id=None):
     click.right_click(project_name, "TreeItem")
     click.right_click_menu("新建成品", "MenuItem")
     program.operation_window(win_name="创建新成品",
@@ -34,17 +34,17 @@ def create_tree(program, click, project_name, product_name, plug_name, icd_name,
 
     # 创建总线（待完成）
 
-    click.right_click(plug_name, "TreeItem")
-    click.right_click_menu("新建1394节点", "MenuItem")
-    click.right_click("确定", "Button")
-    program.operation_window(win_name="创建新1394节点",
-                             params={'input': [('名称：', '1394')], 'click': ["确定"]})
-
-    click.right_click("输出", "TreeItem")
-    click.right_click_menu("新建ICD", "MenuItem")
-    click.right_click("属性信息", "TabItem")
-    program.operation_window(params={'input': [('数据包名称:', ICD_NAME), ('消息ID:', MSG_ID)], 'click': ["域信息"]})
-    click.right_click("保存数据", "Button")
+    # click.right_click(plug_name, "TreeItem")
+    # click.right_click_menu("新建1394节点", "MenuItem")
+    # click.right_click("确定", "Button")
+    # program.operation_window(win_name="创建新1394节点",
+    #                          params={'input': [('名称：', '1394')], 'click': ["确定"]})
+    #
+    # click.right_click("输出", "TreeItem")
+    # click.right_click_menu("新建ICD", "MenuItem")
+    # click.right_click("属性信息", "TabItem")
+    # program.operation_window(params={'input': [('数据包名称:', icd_name), ('消息ID:', msg_id)], 'click': ["域信息"]})
+    # click.right_click("保存数据", "Button")
 
     pass
 

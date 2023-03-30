@@ -1,4 +1,6 @@
-from repair.constants.constant_config import APP_PATH, APP_DIR, MAIN_WINDOW
+from repair.common.tree_config import create_tree
+from repair.constants.constant_config import APP_PATH, APP_DIR, MAIN_WINDOW, PROJECT_NAME, PRODUCT_NAME, MSG_ID, \
+    ICD_NAME, NODE_1394_NAME, BUS_NAME, PLUG_NAME
 from utile.program import Program
 from utile.click import Click
 
@@ -9,30 +11,14 @@ if __name__ == '__main__':
     app = program.connect_program()
     # 激活控件
     click = Click(app)
+    #
     # program.operation_window(params={'input': [], 'click': ["取消"]}, win_name="项目选择框")
     # program.operation_window(params={'click': ["项目", "新建项目"]})
     # program.operation_window(win_name="创建项目",
     #                          params={'input': [('名称：', '测试项目1'), ('版本号', '测试1')], 'click': ["确定"]})
 
-    # click.right_click("测试项目1", "TreeItem")
-    # click.right_click_menu("新建成品", "MenuItem")
-    # program.operation_window(win_name="创建新成品",
-    #                          params={'input': [('名称：', '成品1'), ('ID', '测试1')], 'click': ["确定"]})
-    #
-    # click.right_click("成品1", "TreeItem")
-    # click.right_click_menu("新建插头组", "MenuItem")
-    # program.operation_window(win_name="创建新插头组",
-    #                          params={'click': ["确定"]})
-    #
-    # click.right_click("插头组", "TreeItem")
-    # click.right_click_menu("新建Plug", "MenuItem")
-    # program.operation_window(win_name="创建新Plug",
-    #                          params={'input': [('名称：', 'Plug1')], 'click': ["确定"]})
-    #
-    # click.right_click("Plug1", "TreeItem")
-    # click.right_click_menu("新建1394节点", "MenuItem")
-    #
-    # click.left_click("好的 Enter", "Button")
+    create_tree(program, click, project_name="测试项目1", product_name=PRODUCT_NAME,
+                plug_name=PLUG_NAME, icd_name=BUS_NAME, msg_id=NODE_1394_NAME)
 
     # 总线的操作
     # 后期增加
