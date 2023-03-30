@@ -1,22 +1,24 @@
+from repair.constants.constant_config import MAIN_WINDOW
 from utile.program_utile import connect_program
 
 
 class Click:
-    def __init__(self, window_title):
-        self.app = connect_program()  # Á¬½Ó³ÌĞò
-        self.window = self.app.window(title=window_title)
 
-    # ×ó¼üµ¥»÷°´Å¥£¨ºó¶ËÖ´ĞĞ£©
+    def __init__(self):
+        self.app = connect_program()  # è¿æ¥ç¨‹åº
+        self.window = self.app.window()
+
+    # å·¦é”®å•å‡»æŒ‰é’®ï¼ˆåç«¯æ‰§è¡Œï¼‰
     def left_click_hide(self, control_title, control_type, index=0):
         control = self.window.child_window(title=control_title, control_type=control_type, found_index=index)
         control.invoke()
 
-    # ×ó¼üµ¥»÷°´Å¥£¨»ùÓÚ½çÃæ£©
+    # å·¦é”®å•å‡»æŒ‰é’®ï¼ˆåŸºäºç•Œé¢ï¼‰
     def left_click(self, control_title, control_type, index=0):
         control = self.window.child_window(title=control_title, control_type=control_type, found_index=index)
         control.click_input(button='left')
 
-    # ×ó¼üµ¥»÷ÊäÈë£¨Ñ­»·£©
+    # å·¦é”®å•å‡»è¾“å…¥ï¼ˆå¾ªç¯ï¼‰
     def left_click_input_texts(self, control_parms, input_texts):
         for idx, control_spec in enumerate(control_parms):
             if idx < len(input_texts):
@@ -24,56 +26,57 @@ class Click:
                 control.click_input(button='left', double=False)
                 control.type_keys(input_texts[idx])
 
-    # ×ó¼üË«»÷(ĞèÒª½çÃæÕ¹Ê¾)
+    # å·¦é”®åŒå‡»(éœ€è¦ç•Œé¢å±•ç¤º)
     def left_double_click(self, control_title, control_type, index=0):
         control = self.window.child_window(title=control_title, control_type=control_type, found_index=index)
         control.double_click_input()
 
-    # ×ó¼üË«»÷ÊäÈë(ĞèÒª½çÃæÕ¹Ê¾)
+    # å·¦é”®åŒå‡»è¾“å…¥(éœ€è¦ç•Œé¢å±•ç¤º)
     def left_double_click_input_text(self, text, control_title, control_type, index=0):
         control = self.window.child_window(title=control_title, control_type=control_type, found_index=index)
         control.double_click_input()
         control.type_keys(text)
 
-    # ÓÒ¼üµã»÷
+    # å³é”®ç‚¹å‡»
     def right_click(self, control_title, control_type, index=0):
         control = self.window.child_window(title=control_title, control_type=control_type, found_index=index)
         control.click_input(button='right', double=False)
 
-    # ÓÒ¼üµ¯³ö²Ëµ¥µÄ²Ëµ¥µã»÷·½·¨
+    # å³é”®å¼¹å‡ºèœå•çš„èœå•ç‚¹å‡»æ–¹æ³•
     def right_click_menu(self, menu_control_title, control_type):
-        # Í¨¹ı´°¿Ú±êÌâ»ñÈ¡¶¥²ã´°¿Ú
-        top_window = self.window.top_window()
-        # µã»÷ÓÒ¼üµ¯³öµÄ²Ëµ¥Ïî
+        # é€šè¿‡çª—å£æ ‡é¢˜è·å–é¡¶å±‚çª—å£
+        top_window = self.app.top_window()
+        # ç‚¹å‡»å³é”®å¼¹å‡ºçš„èœå•é¡¹
         menu_item = top_window.child_window(title=menu_control_title, control_type=control_type)
-        # ×ó¼üµã»÷²Ëµ¥Ïî
+        # å·¦é”®ç‚¹å‡»èœå•é¡¹
         menu_item.click_input(button='left')
 
-# ÒÔÏÂÊÇÖ´ĞĞ°¸Àı
+# ä»¥ä¸‹æ˜¯æ‰§è¡Œæ¡ˆä¾‹
 # if __name__ == "__main__":
-#     window_title = 'Ä¿±ê´°¿Ú±êÌâ'
+#     window_title = 'ç›®æ ‡çª—å£æ ‡é¢˜'
+# demo = Click(window_title=MAIN_WINDOW)
 #     control_specs = [
 #         {'control_type': "DataItem", 'title': 'bus_0'},
 #         {'control_type': "DataItem", 'title': 'bus_1'}
 #     ]
-#     input_texts = ['ÎÄ±¾1', 'ÎÄ±¾2', 'ÎÄ±¾3']
-#     demo = Click(window_title=MAIN_WINDOW)
+#     input_texts = ['æ–‡æœ¬1', 'æ–‡æœ¬2', 'æ–‡æœ¬3']
 
-# £¨1£©Êó±ê×ó¼üµ¥»÷
-# demo.left_click("ĞÂÔö", "Button")
-# demo.left_click("ĞÂÔö", "Button")
+# ï¼ˆ1ï¼‰é¼ æ ‡å·¦é”®å•å‡»
+# demo.left_click("é¡¹ç›®", "MenuItem")
+# demo.left_click("æ–°å»ºé¡¹ç›®", "MenuItem")
 #
-# £¨2£©Êó±ê×ó¼üµ¥»÷ÊäÈëÎÄ±¾£¨¶à¸öÎÄ±¾¿Ø¼ş£¬ÒÀ´Îµã»÷ÊäÈë£©
+# ï¼ˆ2ï¼‰é¼ æ ‡å·¦é”®å•å‡»è¾“å…¥æ–‡æœ¬ï¼ˆå¤šä¸ªæ–‡æœ¬æ§ä»¶ï¼Œä¾æ¬¡ç‚¹å‡»è¾“å…¥ï¼‰
 
-# input_test = ["µÚÒ»Ìõ×ÜÏß", "µÚ¶şÌõ×ÜÏß"]
+# input_test = ["ç¬¬ä¸€æ¡æ€»çº¿", "ç¬¬äºŒæ¡æ€»çº¿"]
 # demo.left_click_input_texts(control_specs, input_test)
 
-# £¨3£©Êó±ê×ó¼üË«»÷
-# demo.left_double_click("µÚÒ»Ìõ×ÜÏß", "DataItem")
+# ï¼ˆ3ï¼‰é¼ æ ‡å·¦é”®åŒå‡»
+# demo.left_double_click("ç¬¬ä¸€æ¡æ€»çº¿", "DataItem")
 #
-# £¨4£©Êó±ê×ó¼üË«»÷½øĞĞÎÄ±¾ÊäÈë
-# input_text_for_double_click = 'Ë«»÷ÊäÈëµÄÎÄ±¾'
+# ï¼ˆ4ï¼‰é¼ æ ‡å·¦é”®åŒå‡»è¿›è¡Œæ–‡æœ¬è¾“å…¥
+# input_text_for_double_click = 'åŒå‡»è¾“å…¥çš„æ–‡æœ¬'
 # demo.left_double_click_input_text("aaa", 'bus_0', "DataItem", )
 #
-# # £¨5£©Êó±êÓÒ¼üµ¥»÷
-# demo.right_click("ÏîÄ¿", "TreeItem")
+# # ï¼ˆ5ï¼‰é¼ æ ‡å³é”®å•å‡»
+# demo.right_click("é¡¹ç›®", "TreeItem")
+# demo.right_click_menu("æ–°å»ºæˆå“", "MenuItem")

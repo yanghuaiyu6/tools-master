@@ -45,4 +45,4 @@ def operation_window(app, params, win_name=MAIN_WINDOW):
             print(f"未找到目标控件，参数为：{item}")
             raise ControlNotFoundException("未找到控件")
 
-# 双击然后输入文本内容
+

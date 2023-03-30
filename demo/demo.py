@@ -1,19 +1,19 @@
 from repair.constants.constant_config import MAIN_WINDOW
+from utile.click_utile import right_click_menu, right_click
 from utile.program_utile import start_program, connect_program, operation_window
-from utile.click_utile import right_click, right_click_menu, cell_input_text, \
-    left_click_by_index, left_click_by_title_and_type
 
-start_program()  # 启动程序
+
+# start_program()  # 启动程序
 app = connect_program()  # 连接程序
 if __name__ == '__main__':
-    operation_window(app=app, win_name="项目选择框", params={'input': [], 'click': ["取消"]})
+    # operation_window(app=app, win_name="项目选择框", params={'input': [], 'click': ["取消"]})
     # 获取程序窗口，执行操作参数
-    operation_window(app=app, win_name=MAIN_WINDOW, params={'input': [], 'click': ["项目", "新建项目"]})
+    # operation_window(app=app, win_name=MAIN_WINDOW, params={'input': [], 'click': ["项目", "新建项目"]})
     # 创建项目，传入参数
-    operation_window(app=app, win_name="创建项目",
-                     params={'input': [('名称：', '自动项目1'), ('版本号', '自动1')], 'click': ["确定"]})
+    # operation_window(app=app, win_name="创建项目",
+    #                  params={'input': [('名称：', '自动项目1'), ('版本号', '自动1')], 'click': ["确定"]})
     # 控制右键点击相应的控件
-    right_click(app, title="自动项目1", control_type="TreeItem")
+    right_click(app, title="项目", control_type="TreeItem")
     # 弹出项目层菜单栏进行点击的操作
     right_click_menu(app=app, menu_item_title="新建成品", control_type="MenuItem")
     # 定位到创建新成品窗口中
@@ -39,17 +39,17 @@ if __name__ == '__main__':
     # 添加总线
     operation_window(app=app, win_name=MAIN_WINDOW, params={'click': ["新增", "新增"]})
     # # 双击输入文本内容
-    cell_input_text(app=app, window_title=MAIN_WINDOW, control_title="bus_0", control_type="DataItem",
-                    input="1394CC总线")
+    # cell_input_text(app=app, window_title=MAIN_WINDOW, control_title="bus_0", control_type="DataItem",
+    #                 input="1394CC总线")
     # cell_input_text(app=app, window_title=MAIN_WINDOW, control_title="bus_1", control_type="DataItem",
     #                 input="1394CCDL总线")
     # 下拉框的选择
-    left_click_by_index(app=app, window_title=MAIN_WINDOW, control_type="DataItem", found_index=1)
+    # left_click_by_index(app=app, window_title=MAIN_WINDOW, control_type="DataItem", found_index=1)
     # 选择总线类型（待定）
     # right_click_menu(app=app, menu_item_title="1553总线", control_type="ListItem")
 
     # 保存总线
-    left_click_by_title_and_type(app=app, window_title=MAIN_WINDOW, control_type="Button", control_title="保存")
+    # left_click_by_title_and_type(app=app, window_title=MAIN_WINDOW, control_type="Button", control_title="保存")
 
     # 继续新建总线节点
     # 控制右键点击插头层控件
