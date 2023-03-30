@@ -1,11 +1,11 @@
 from repair.constants.constant_config import MAIN_WINDOW
-from utile.program_utile import connect_program
+from repair.utils.program import connect_program
 
 
 class Click:
 
-    def __init__(self):
-        self.app = connect_program()  # 连接程序
+    def __init__(self, app):
+        self.app = app
         self.window = self.app.window()
 
     # 左键单击按钮（后端执行）

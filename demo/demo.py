@@ -1,17 +1,6 @@
 from repair.constants.constant_config import MAIN_WINDOW
-from utile.click_utile import right_click_menu, right_click
-from utile.program_utile import start_program, connect_program, operation_window
 
-
-# start_program()  # 启动程序
-app = connect_program()  # 连接程序
 if __name__ == '__main__':
-    # operation_window(app=app, win_name="项目选择框", params={'input': [], 'click': ["取消"]})
-    # 获取程序窗口，执行操作参数
-    # operation_window(app=app, win_name=MAIN_WINDOW, params={'input': [], 'click': ["项目", "新建项目"]})
-    # 创建项目，传入参数
-    # operation_window(app=app, win_name="创建项目",
-    #                  params={'input': [('名称：', '自动项目1'), ('版本号', '自动1')], 'click': ["确定"]})
     # 控制右键点击相应的控件
     right_click(app, title="项目", control_type="TreeItem")
     # 弹出项目层菜单栏进行点击的操作

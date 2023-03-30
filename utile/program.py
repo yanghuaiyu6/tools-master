@@ -2,9 +2,7 @@ import subprocess
 import time
 from pywinauto import Application
 
-
-class ControlNotFoundException(Exception):
-    print("´íÎóÁË")
+from utile.exception_utile import ControlNotFoundException
 
 
 class Program:
@@ -21,10 +19,10 @@ class Program:
         while True:
             try:
                 self.app = Application(backend="uia").connect(title_re=self.main_window_title, timeout=10)
-                print(f"Á´½Ó£º{self.main_window_title} ³ÌĞò³É¹¦")
+                print(f"é“¾æ¥ï¼š{self.main_window_title} ç¨‹åºæˆåŠŸ")
                 return self.app
             except TimeoutError:
-                print("Á¬½ÓÊ§°Ü£¬Çë¼ì²éµØÖ·ÊÇ·ñÅäÖÃÕıÈ·")
+                print("è¿æ¥å¤±è´¥ï¼Œè¯·æ£€æŸ¥åœ°å€æ˜¯å¦é…ç½®æ­£ç¡®")
                 time.sleep(1)
 
     def operation_window(self, params, win_name=None):
@@ -32,23 +30,24 @@ class Program:
             win_name = self.main_window_title
 
         win = self.app.window(title_re=win_name)
-        print(f"³É¹¦»ñÈ¡²Ù×÷´°¿Ú£º{win_name}")
+        print(f"æˆåŠŸè·å–æ“ä½œçª—å£ï¼š{win_name}")
 
         for item in params.get('input', []):
             target_control = win.child_window(title=item[0])
             if target_control.exists():
                 self.set_text(target_control, item[1])
             else:
-                print(f"Î´ÕÒµ½Ä¿±ê¿Ø¼ş£¬²ÎÊıÎª£º{item[0]}")
-                raise ControlNotFoundException("Î´ÕÒµ½¿Ø¼ş")
+                print(f"æœªæ‰¾åˆ°ç›®æ ‡æ§ä»¶ï¼Œå‚æ•°ä¸ºï¼š{item[0]}")
+                raise ControlNotFoundException("æœªæ‰¾åˆ°æ§ä»¶")
 
         for item in params.get('click', []):
             target_control = win.child_window(title=item)
             if target_control.exists():
-                target_control.click_input()
+                # target_control.click_input()
+                target_control.invoke()
             else:
-                print(f"Î´ÕÒµ½Ä¿±ê¿Ø¼ş£¬²ÎÊıÎª£º{item}")
-                raise ControlNotFoundException("Î´ÕÒµ½¿Ø¼ş")
+                print(f"æœªæ‰¾åˆ°ç›®æ ‡æ§ä»¶ï¼Œå‚æ•°ä¸ºï¼š{item}")
+                raise ControlNotFoundException("æœªæ‰¾åˆ°æ§ä»¶")
 
     def set_text(self, control, text):
         siblings = control.parent().children()
@@ -58,19 +57,18 @@ class Program:
                 return sibling_edit
         return None
 
-
 # if __name__ == "__main__":
-    # APP_PATH = "path_to_your_app_executable"
-    # APP_DIR = "path_to_your_app_directory"
-    # MAIN_WINDOW = "main_window_title"
-    #
-    # automation = ProgramAutomation(APP_PATH, APP_DIR, MAIN_WINDOW)
-    #
-    # automation.start_program()
-    # automation.connect_program()
-    #
-    # params = {
-    #     'input': [('¿Ø¼ş±êÌâ1', 'ÎÄ±¾1'), ('¿Ø¼ş±êÌâ2', 'ÎÄ±¾2')],
-    #     'click': ['µã»÷¿Ø¼ş±êÌâ']
-    # }
-    # automation.operation_window(params)
+# APP_PATH = "path_to_your_app_executable"
+# APP_DIR = "path_to_your_app_directory"
+# MAIN_WINDOW = "main_window_title"
+#
+# automation = ProgramAutomation(APP_PATH, APP_DIR, MAIN_WINDOW)
+#
+# automation.start_program()
+# automation.connect_program()
+#
+# params = {
+#     'input': [('æ§ä»¶æ ‡é¢˜1', 'æ–‡æœ¬1'), ('æ§ä»¶æ ‡é¢˜2', 'æ–‡æœ¬2')],
+#     'click': ['ç‚¹å‡»æ§ä»¶æ ‡é¢˜']
+# }
+# automation.operation_window(params)
