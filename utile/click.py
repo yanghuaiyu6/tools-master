@@ -45,15 +45,15 @@ class Click:
         # 左键点击菜单项
         menu_item.click_input(button='left')
 
-
-if __name__ == "__main__":
-    # window_title = '目标窗口标题'
-    control_specs = [
-        {'control_type': "DataItem", 'title': 'bus_0'},
-        {'control_type': "DataItem", 'title': 'bus_1'}
-    ]
-    input_texts = ['文本1', '文本2', '文本3']
-    demo = Click(window_title=MAIN_WINDOW)
+# 以下是执行案例
+# if __name__ == "__main__":
+#     window_title = '目标窗口标题'
+#     control_specs = [
+#         {'control_type': "DataItem", 'title': 'bus_0'},
+#         {'control_type': "DataItem", 'title': 'bus_1'}
+#     ]
+#     input_texts = ['文本1', '文本2', '文本3']
+#     demo = Click(window_title=MAIN_WINDOW)
 
     # （1）鼠标左键单击
     # demo.left_click("新增", "Button")
